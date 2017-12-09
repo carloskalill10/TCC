@@ -1,0 +1,5 @@
+sequencia de comandos para deixar os documentos no git
+git add .
+git commit -m "PRIMEIRO"
+git remote add origin https://github.com/carloskalill10/TCC.git
+git push -u origin master
