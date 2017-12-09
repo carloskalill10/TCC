@@ -3,7 +3,7 @@ const mongoose = require ('mongoose')
 const Schema = mongoose.Schema
 
 const insert_auxSchema =  new Schema({
-  nome_laboratorio :{type: String,required:true},
+  id_laboratorio :{type: Schema.Types.ObjectId, ref: 'labs'},
   tag : {type: String,required:true},
   data :{type: Date,required:true},
 })

@@ -1,10 +1,10 @@
-const Model =reservasModel
+const Model =labsModel
 const msg = ''
 const async =require ('async')
 
 module.exports ={
   create: function (req,res, cb){
-    const dados =req.body
+    const dados = req.body
     const model = new Model(dados)
 
     model.save (function(err,data){
@@ -12,13 +12,13 @@ module.exports ={
     })
   },
 
-  retrieve: function(req,res,cb){ // consertar para trazer nome do usuario e do laboratorio que foi feita a reserva
+  retrieve: function(req,res,cb){
     Model.find({}, function (err,data){
       cb (err,data,res)
     })
   },
 
-  show: function (req,res,cb){ // consertar para trazer nome do usuario e do laboratorio que foi feita a reserva 
+  show: function (req,res,cb){
     const query = {_id: req.params.id}
 
     Model.findOne (query, function (err, data){
@@ -36,10 +36,12 @@ module.exports ={
     })
   },
 
-  deletar: function (req,res,cb){
+  desabilitar: function (req,res,cb){
     const query={_id:req.params.id}
+    const mod = {"ativo":false}
 
-    Model.remove (query, function(err,data){
+    delete mod._id
+    Model.update (query, mod, function(err,data){
       cb (err,data,res);
     })
   },
