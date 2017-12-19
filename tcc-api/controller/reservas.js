@@ -25,7 +25,7 @@ module.exports ={
       cb (err, data, res)
     })
   } ,
-
+  
   update: function (req,res,cb){
     const query={_id:req.params.id}
     const mod = req.body

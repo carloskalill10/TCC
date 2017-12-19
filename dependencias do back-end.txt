@@ -1,0 +1,3 @@
+npm init - criar o arquivo package.json
+npm install express body-parser mongoose node-restful mongoose-paginate lodash express-query-init pm2 --save
+nom install nodemon --save-dev
