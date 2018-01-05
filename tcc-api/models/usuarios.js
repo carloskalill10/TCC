@@ -7,7 +7,7 @@ const usuariosSchema =  new Schema({
   nome: {type: String, required:true},
   tipo: {type: Number, default:2,required:true },
   funcao:{type: String, required:true, uppercase:true,
-        enum:['ADMINISTRADOR','PROFESSOR','ALUNO','ASSISTENTE ADMINISTRATIVO','EXTERNO']
+        enum:['PROFESSOR','ALUNO','ADMINISTRATIVO','TECNICO','OUTRA']
       },
   ativo:{type:Boolean,default:true,required:true},
   senha:{type:String, required:true},

@@ -1,1 +1,39 @@
 <content-header name="Usuários" small="Cadastrar"> </content-header>
+
+<section class="content">
+  <div class="nav-tabs-custom">
+    <div class="box-header with-border">
+      <h2 class="box-title"> <b>Cadastrar um novo Usuário </b></h2>
+    </div>
+
+    <div role="form" >
+      <div class="box-body" >
+          <field id="tag" label="Tag" grid="12 6 5 5" placeholder="informe a tag do usuário"> </field>
+          <field id="nome" label="Nome" grid="12 6 5 5" placeholder="informe o nome do usuário"> </field>
+          <div class="form-group col-xs-12 col-sm-6 col-md-5 col-lg-5" >
+                  <label>Função Institucional</label>
+                  <select class="form-control">
+                    <option>PROFESSOR</option>
+                    <option>ALUNO</option>
+                    <option>ADMINISTRATIVO</option>
+                    <option>TECNICO</option>
+                    <option>OUTRA</option>
+                  </select>
+          </div>
+          <field id="senha" label="Senha" grid="12 6 5 5" placeholder="informe a senha do usuário"> </field>
+
+          <div class="checkbox col-xs-12 col-sm-6 col-md-5 col-lg-5">
+              <label>
+                <input type="checkbox"> Administrador
+              </label>
+          </div>
+
+      </div>
+
+      <div class="box-footer">
+        <button class="btn btn-primary" >Cadastrar Usuário </button>
+      </div>
+    </div>
+
+  </div>
+</section>
