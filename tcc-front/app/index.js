@@ -1,5 +1,5 @@
-angular.module('laboratoriosIfam',[
-  'ui.router',
+angular.module('app',[
   'ngAnimate',
-  'toastr'
+  'ui.router',
+  'toastr',
 ])

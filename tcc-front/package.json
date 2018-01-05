@@ -8,7 +8,7 @@
     "dev": "gulp",
     "production": "gulp --production"
   },
-  "keywords":[],
+  "keywords": [],
   "author": "carlos kenneton",
   "license": "ISC",
   "devDependencies": {

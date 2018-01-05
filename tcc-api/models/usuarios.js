@@ -11,7 +11,6 @@ const usuariosSchema =  new Schema({
       },
   ativo:{type:Boolean,default:true,required:true},
   senha:{type:String, required:true},
-
 })
 
 module.exports = usuariosModel= mongoose.model ('usuarios',usuariosSchema)
