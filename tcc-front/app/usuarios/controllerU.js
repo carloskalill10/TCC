@@ -45,37 +45,42 @@
        })
      }
 
+     $scope.iniciarModalU=function(id,tag,nome,funcao,tipo){
+       var str1="ADMINISTRADOR"
+       if(str1==tipo){
+         $scope.userTipo=true
+       }else{
+         $scope.userTipo=false
+       }
+       $('#modal-atualizarU').modal('show')
+       $scope.userId=id
+       $scope.userTag=tag
+       $scope.userNome=nome
+       $scope.userFuncao=funcao
+     }
 
-    //---------------------------------------------------------
-  /*
+     $scope.fecharModalU=function(){
+       $('#modal-atualizarU').modal('hide');
+     }
 
-    $scope.iniciarModal=function(nome,id){
-      $('#modal-atualizar').modal('show')
-      $scope.labNome=nome
-      $scope.labId=id
+     $scope.atualizarU=function(){
+       let atualizar =url+"/"+$scope.userId
+       let json = {"nome":$scope.userNome,
+                  "funcao":$scope.userFuncao,
+                  "tipo":$scope.userTipo}
 
-    }
+       $http.put(atualizar,json).then(function(response){
+         alert('Atualização Realizada')
+         $scope.fecharModalU()
+         $scope.listaruser()
 
-    $scope.fecharModal=function(){
-      $('#modal-atualizar').modal('hide');
-    }
+       }).catch(function(resp){
+         alert('Erro na Atualização')
+         $scope.fecharModalU()
 
-    $scope.atualizarLab=function(){
-      let atualizar =url+"/"+$scope.labId
-      let json = {"nome":$scope.labNome}
+       })
+     }
 
-      $http.put(atualizar,json).then(function(response){
-        alert('Atualização Realizada')
-        $scope.fecharModal()
-        $scope.listarLab()
-
-      }).catch(function(resp){
-        alert('Erro na Atualização')
-        $scope.fecharModal()
-
-      })
-    }
-    */
     $scope.listaruser()
 
   }

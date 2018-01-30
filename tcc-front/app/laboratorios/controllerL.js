@@ -36,9 +36,8 @@
 
     $scope.iniciarModal=function(nome,id){
       $('#modal-atualizar').modal('show')
-      $scope.labNome=''
+      $scope.labNome=nome
       $scope.labId=id
-      console.log('ini '+$scope.labNome)
 
     }
 
@@ -46,11 +45,10 @@
       $('#modal-atualizar').modal('hide');
     }
 
-    $scope.atualizarLab=function(teste=1){
+    $scope.atualizarLab=function(){
       let atualizar =url+"/"+$scope.labId
       let json = {"nome":$scope.labNome}
-      console.log(json)
-      /*$http.put(atualizar,json).then(function(response){
+      $http.put(atualizar,json).then(function(response){
         alert('Atualização Realizada')
         $scope.fecharModal()
         $scope.listarLab()
@@ -59,11 +57,10 @@
         alert('Erro na Atualização')
         $scope.fecharModal()
 
-      })*/
+      })
     }
 
     $scope.listarLab()
-
   }
 
 })()

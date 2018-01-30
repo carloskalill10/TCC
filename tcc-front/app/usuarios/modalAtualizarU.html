@@ -1,23 +1,33 @@
-<div class="modal fade" id="modal-atualizar" style="display: none;">
+<div class="modal fade" id="modal-atualizarU" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 style="margin: 0px">Atualizar Usuário </h3>
             </div>
-            <div class="modal-body" >
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <b>Laboratório:</b>
-                    </div>
+            <div class="box-body" >
+                <field id="tag" label="Tag" grid="12 12 12 12" placeholder="informe a tag do usuário" model="userTag" disabled="true"></field>
+                <field id="nome" label="Nome" grid="12 12 12 12" placeholder="informe o nome do usuário" model="userNome"> </field>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+                        <label>Função Institucional</label>
+                        <select id="funcao" class="form-control" ng-model="userFuncao">
+                          <option>PROFESSOR</option>
+                          <option>ALUNO</option>
+                          <option>ADMINISTRATIVO</option>
+                          <option>TECNICO</option>
+                          <option>OUTRA</option>
+                        </select>
                 </div>
-                <div class="row">
-                      <field id="nome" grid="12 12 12 12" placeholder="informe o nome do laboratório" model="labNome"> </field>
+                <div class="checkbox col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label>
+                      <input id="tipo" type="checkbox" ng-model="userTipo"> Administrador
+                    </label>
                 </div>
+
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" ng-click="atualizarLab()">Atualizar</button>
+                <button class="btn btn-success" ng-click="atualizarU()">Atualizar</button>
 
-                <button class="btn  btn-danger" ng-click="fecharModal()">Sair</button>
+                <button class="btn  btn-danger" ng-click="fecharModalU()">Sair</button>
             </div>
         </div>
         <!-- /.modal-content -->
