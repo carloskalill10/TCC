@@ -2,7 +2,7 @@ require ('./config/db');
 
 const express = require('express');
 const bodyParser = require ('body-parser');
-
+const allowCors =require('./config/cors');
 const api={};
 api.usuarios =require ('./routes/usuarios');
 api.reservas =require('./routes/reservas');
@@ -13,6 +13,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(allowCors);
+
 
 app.use ('/api/usuarios',api.usuarios);
 app.use ('/api/reservas',api.reservas);

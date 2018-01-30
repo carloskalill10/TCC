@@ -13,7 +13,7 @@ module.exports ={
   },
 
   retrieve: function(req,res,cb){
-    Model.find({}, function (err,data){
+    Model.find({"ativo":true}, function (err,data){
       cb (err,data,res)
     })
   },

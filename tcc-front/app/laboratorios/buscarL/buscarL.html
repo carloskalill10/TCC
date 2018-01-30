@@ -1,1 +1,25 @@
 <content-header name="Laboratórios" small="Listar"> </content-header>
+
+<div class="box-body"  ng-controller="labCtrl">
+  <table class="table">
+    <thead>
+      <tr>
+        <th> ID </th>
+        <th> NOME </th>
+        <th> AÇÕES </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="lab in labs">
+        <td>{{lab._id}}</td>
+        <td>{{lab.nome}}</td>
+        <td style="width:100px;">
+          <button class="btn btn-warning" ng-click="iniciarModal(lab.nome,lab._id)"> <i class="fa fa-pencil"> </i> </button>
+          <button class="btn btn-danger" ng-click="desabilitar(lab._id)"> <i class="fa fa-trash-o"> </i> </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div ng-include="'laboratorios/modalAtualizar.html'"></div>
+</div>

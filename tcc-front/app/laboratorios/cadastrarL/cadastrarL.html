@@ -1,18 +1,18 @@
 <content-header name="Laboratórios" small="Cadastrar"> </content-header>
 
-<section class="content">
-  <div class="nav-tabs-custom">
+<section class="content" >
+  <div class="nav-tabs-custom" ng-controller="labCtrl">
     <div class="box-header with-border">
-      <h2 class="box-title"> <b>Cadastrar um novo Laboratório </b></h2>
+      <h2 class="box-title"> <b>Cadastrar um Novo Laboratório </b></h2>
     </div>
 
     <div role="form" >
       <div class="box-body" >
-          <field id="nome" label="Nome" grid="12 6 5 5" placeholder="informe o nome do laboratório"> </field>
+          <field id="nome" label="Nome" grid="12 6 5 5" placeholder="informe o nome do laboratório" model="lab.nome"> </field>
       </div>
 
       <div class="box-footer">
-        <button class="btn btn-primary" >Cadastrar Laboratório </button>
+        <button class="btn btn-primary" ng-click="create()" > Cadastrar Laboratório </button>
       </div>
     </div>
 

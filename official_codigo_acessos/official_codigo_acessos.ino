@@ -17,12 +17,12 @@ char id_lab []="5a2b7cdc33b70f56e0ef5c23";
 char code_RFID[20] = ""; // codigo lido do rfid
 
 // Definições da rede Wifi
-const char* login = "K1";
-const char* senha = "12345678";
+const char* login = "PISO 2";
+const char* senha = "a82dis@!";
 
 // endereço IP local do Servidor Web instalado na Raspberry Pi 3
 // onde será exibida a página web
-const char* Host = "192.168.43.196";   
+const char* Host = "192.168.0.22";   
 
 WiFiClient client;
 
@@ -88,7 +88,7 @@ void montaJSON(){
  * função que envia os dados do sensor para o servidor em formato JSON
  * faz um POST request ao servidor 
  */
-int metodoPOSTinc()
+int metodoPOST()
 {
   if(!client.connect(Host,3000) )     // aqui conectamos ao servidor
   {
@@ -98,7 +98,7 @@ int metodoPOSTinc()
     Serial.println("Conectado ao servidor");
     // Make HTTP POST request    
     client.println("POST /api/acessos HTTP/1.1");
-    client.println("Host: 192.168.0.12");
+    client.println("Host: 192.168.0.22");
     client.println("Content-Type: application/json");
     client.print("Content-Length: ");
     client.println(object.measureLength());
@@ -115,11 +115,12 @@ int metodoPOSTinc()
 
 char *read_RFID(char *buffer){ // Funcao para ler as tags
     // Verifica se ha tags presentes e ler
+   
     if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial()) {
-       buffer = dump_byte_array(mfrc522.uid.uidByte, mfrc522.uid.size, buffer);
-       // Mostra o codigo da tag em hexadecimal
-       
+       buffer = dump_byte_array(mfrc522.uid.uidByte, mfrc522.uid.size,buffer);
+   
        Serial.printf("Tag: %s\n", buffer);
+       
        return buffer;
     } else{
        return NULL;
@@ -129,9 +130,10 @@ char *read_RFID(char *buffer){ // Funcao para ler as tags
 
 
 // Funcao para converter codigo RFID para char [] em hexadecimal
-char * dump_byte_array(byte *buffer, byte bufferSize, char * result) {
+char *dump_byte_array(byte *buffer, byte bufferSize, char *result) {
+ 
     for (byte i = 0; i < bufferSize; i++) {
-      char num[3];
+        char num[3];
       itoa(buffer[i], num, 16);
       if (buffer[i] <= 0xF) strcat(result, "0");
       strcat(result, num);
@@ -158,24 +160,22 @@ void setup() {
 
 
 void loop() {
-    
   
   if (read_RFID(code_RFID)){ // Verifica se o cartao foi lido
 
      if(WiFi.status() == WL_CONNECTED) { // Verifica a conexao Wifi
            montaJSON();  // transforma os dados em formato JSON
-           if (metodoPOSTinc()==1){      // envia os dados ao servidor   
+           if (metodoPOST()==1){      // envia os dados ao servidor   
                 Serial.println(" enviou!!!!!!!!!");
            }else{
                 Serial.println(" nao enviou, servidor nao disponivel!!!!!!!!!");
            }
 
-       
      }else{
               Serial.printf("não conectado a wifi...");
              
      }
-      delay (3000);
+      delay (2000);
   }
 }
 

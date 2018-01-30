@@ -14,6 +14,9 @@ angular.module('app').config([
     }).state('buscarR',{
       url:"/reservas/buscarR",
       templateUrl:"reservas/buscarR/buscarR.html"
+    }).state('indexRes',{
+      url:"/reservas/indexRes",
+      templateUrl:"reservas/indexRes.html"
     }).state('cadastrarR',{
       url:"/reservas/cadastrarR",
       templateUrl:"reservas/cadastrarR/cadastrarR.html"
@@ -24,6 +27,6 @@ angular.module('app').config([
       url:"/usuarios/cadastrarU",
       templateUrl:"usuarios/cadastrarU/cadastrarU.html"
     })
-    $urlRouterProvider.otherwise('/reservas/buscarR.html')
+    $urlRouterProvider.otherwise('/reservas/indexRes.html')
   }
 ])

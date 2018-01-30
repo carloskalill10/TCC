@@ -1,1 +1,30 @@
-<content-header name="Usuários" small="Listar"> </content-header>
+<content-header name="Laboratórios" small="Listar"> </content-header>
+
+<div class="box-body"  ng-controller="userCtrl">
+  <table class="table">
+    <thead>
+      <tr>
+        <th> TAG </th>
+        <th> NOME </th>
+        <th> FUNÇÃO INSTITUCIONAL </th>
+        <th> TIPO DE USUÁRIO </th>
+        <th> AÇÕES </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users">
+        <td>{{user.tag}}</td>
+        <td>{{user.nome}}</td>
+        <td>{{user.funcao}}</td>
+        <td>{{user.tipo}}</td>
+        <td style="width:100px;">
+          <button class="btn btn-warning" ng-click="iniciarModal(user.tag,user.nome,user.funcao,user.senha,user.tipo)"> <i class="fa fa-pencil"> </i> </button>
+          <button class="btn btn-danger" ng-click="desabilitar(user._id)"> <i class="fa fa-trash-o"> </i> </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div ng-include="'laboratorios/modalAtualizar.html'"></div>
+</div>

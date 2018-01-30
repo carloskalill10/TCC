@@ -13,13 +13,13 @@ module.exports ={
   },
 
   retrieve: function(req,res,cb){
-    Model.find({}, function (err,data){
+    Model.find({"ativo":true}, function (err,data){
       cb (err,data,res)
     })
   },
 
   show: function (req,res,cb){
-    const query = {_id: req.params.id}
+    const query = {_id: req.params.id,"ativo":true}
 
     Model.findOne (query, function (err, data){
       cb (err, data, res)
