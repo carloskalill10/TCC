@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="lab in labs">
+      <tr ng-repeat="lab in labs | orderBy:'nome'">
         <td>{{lab._id}}</td>
         <td>{{lab.nome}}</td>
         <td style="width:100px;">
