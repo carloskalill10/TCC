@@ -3,22 +3,26 @@
     '$scope',
     '$http',
     userController
-
   ])
 
   function userController($scope,$http){
-
     const url='http://localhost:3000/api/usuarios'
-
+    $scope.userTipo=false
     $scope.user={}
     $scope.user.tipo=false
+
     $scope.listaruser=function () {
       $http.get(url).then(function(response){
         let users =response.data
         $scope.users=[]
         users.forEach(function(data){
-          data.tipo=data.tipo==1?'ADMINISTRADOR':'COMUM'
+          if (data.tipo==1){
+            data.tipo='ADMINISTRADOR'
             $scope.users.push(data)
+          }else{
+            data.tipo='COMUM'
+            $scope.users.push(data)
+          }
         })
       })
     }
@@ -35,48 +39,66 @@
       })
     }
 
-    $scope.desabilitar=function (iduser) {
-       let desabilitar = url+"/"+iduser
+    $scope.iniciarModalDeletarU=function(user){
+      $('#modal-DeletarU').modal('show')
+      $scope.user=user
+      var str1="ADMINISTRADOR"
+      if(str1==$scope.user.tipo){
+          $scope.userTipo=true
+      }else{
+          $scope.userTipo=false
+      }
+
+    }
+
+    $scope.fecharModalDeletarU=function(){
+      $('#modal-DeletarU').modal('hide');
+      $scope.listaruser()
+    }
+
+    $scope.desabilitar=function () {
+       let desabilitar = url+"/"+$scope.user._id
        $http.delete(desabilitar).then(function(response){
-         $scope.listaruser()
-         alert('Laboratorio Excluido')
+         $scope.fecharModalDeletarU()
+         alert('Usuário Excluído')
        }).catch(function(resp){
+          $scope.fecharModalDeletarU()
          alert('Erro na exclusão')
        })
      }
 
-     $scope.iniciarModalU=function(id,tag,nome,funcao,tipo){
-       var str1="ADMINISTRADOR"
-       if(str1==tipo){
-         $scope.userTipo=true
-       }else{
-         $scope.userTipo=false
-       }
+     $scope.iniciarModalU=function(user){
        $('#modal-atualizarU').modal('show')
-       $scope.userId=id
-       $scope.userTag=tag
-       $scope.userNome=nome
-       $scope.userFuncao=funcao
+       $scope.user=user
+       var str1="ADMINISTRADOR"
+       if(str1==$scope.user.tipo){
+          $scope.user.tipo=true
+       }else{
+          $scope.user.tipo=false
+       }
+
      }
 
      $scope.fecharModalU=function(){
        $('#modal-atualizarU').modal('hide');
+       $scope.listaruser()
      }
 
      $scope.atualizarU=function(){
-       let atualizar =url+"/"+$scope.userId
-       let json = {"nome":$scope.userNome,
-                  "funcao":$scope.userFuncao,
-                  "tipo":$scope.userTipo}
-
-       $http.put(atualizar,json).then(function(response){
-         alert('Atualização Realizada')
+       let atualizar = url+"/"+$scope.user._id
+       if($scope.user.tipo==true){
+          $scope.user.tipo=1
+       }else{
+          $scope.user.tipo=2
+       }
+       console.log($scope.user.tipo)
+       $http.put(atualizar,$scope.user).then(function(response){
          $scope.fecharModalU()
-         $scope.listaruser()
+         alert('Atualização Realizada')
 
        }).catch(function(resp){
-         alert('Erro na Atualização')
          $scope.fecharModalU()
+         alert('Erro na Atualização')
 
        })
      }

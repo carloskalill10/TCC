@@ -1,39 +1,38 @@
 <content-header name="Usuários" small="Cadastrar"> </content-header>
 
 <section class="content">
-  <div class="nav-tabs-custom" ng-controller="userCtrl" >
-    <div class="box-header with-border">
-      <h2 class="box-title"> <b>Cadastrar um novo Usuário </b></h2>
-    </div>
+      <div class="nav-tabs-custom" ng-controller="userCtrl">
+        <div class="box-header with-border">
+          <h2 class="box-title"> <b>Cadastrar um novo Usuário </b></h2>
+        </div>
 
-    <div role="form" >
-      <div class="box-body" >
+        <div role="form" >
+          <div class="box-body" >
 
-          <field id="tag" label="Tag" grid="12 6 5 5" placeholder="informe a tag do usuário" model="user.tag"></field>
-          <field id="nome" label="Nome" grid="12 6 5 5" placeholder="informe o nome do usuário" model="user.nome"> </field>
-          <div class="form-group col-xs-12 col-sm-6 col-md-5 col-lg-5" >
-                  <label>Função Institucional</label>
-                  <select id="funcao" class="form-control" ng-model="user.funcao" data-placeholder="Selecione a função">
-                    <option>PROFESSOR</option>
-                    <option>ALUNO</option>
-                    <option>ADMINISTRATIVO</option>
-                    <option>TECNICO</option>
-                    <option>OUTRA</option>
-                  </select>
+              <field id="tag" label="Tag" grid="12 6 5 5" placeholder="informe a tag do usuário" model="user.tag"></field>
+              <field id="nome" label="Nome" grid="12 6 5 5" placeholder="informe o nome do usuário" model="user.nome"> </field>
+              <div class="form-group col-xs-12 col-sm-6 col-md-5 col-lg-5" >
+                      <label>Função Institucional</label>
+                      <select id="funcao" class="form-control" ng-model="user.funcao" data-placeholder="Selecione a função">
+                        <option>PROFESSOR</option>
+                        <option>ALUNO</option>
+                        <option>ADMINISTRATIVO</option>
+                        <option>TECNICO</option>
+                        <option>OUTRA</option>
+                      </select>
+              </div>
+                <field id="senha" label="Senha" type="password" grid="12 6 5 5" placeholder="informe a senha do usuário" model="user.senha"> </field>
+              <div class="checkbox col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                  <label>
+                    <input id="tipo" type="checkbox" ng-model="user.tipo"> Administrador
+                  </label>
+              </div>
+
           </div>
-            <field id="senha" label="Senha" type="password" grid="12 6 5 5" placeholder="informe a senha do usuário" model="user.senha"> </field>
-          <div class="checkbox col-xs-12 col-sm-6 col-md-5 col-lg-5">
-              <label>
-                <input id="tipo" type="checkbox" ng-model="user.tipo"> Administrador
-              </label>
+
+          <div class="box-footer">
+            <button class="btn btn-primary" ng-click=create()> Cadastrar Usuário </button>
           </div>
-
+        </div>
       </div>
-
-      <div class="box-footer">
-        <button class="btn btn-primary" ng-click=create()> Cadastrar Usuário </button>
-      </div>
-    </div>
-
-  </div>
 </section>

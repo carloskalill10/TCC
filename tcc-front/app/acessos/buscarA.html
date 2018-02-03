@@ -1,1 +1,20 @@
 <content-header name="Acessos" small="Listar Acessos"> </content-header>
+
+<div class="box-body" ng-controller="labCtrl">
+  <table class="table">
+    <thead>
+      <tr>
+        <th> TAG </th>
+        <th> NOME </th>
+        <th> LABORATÓRIO </th>
+        <th> DATA DO ACESSO </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="acesso in acessos | orderBy:'-dt_acesso'">
+        <td>{{lab._id}}</td>
+        <td>{{lab.nome}}</td>
+
+      </tr>
+    </tbody>
+  </table>

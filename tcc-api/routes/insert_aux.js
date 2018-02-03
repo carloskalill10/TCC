@@ -25,6 +25,10 @@ const cbAstncResponseJSON = function (err,data,res,callback){
   callback()
 }
 
+router.get ('/', function (req,res){
+  Controller.show (req,res,cbResponseJSON)
+})
+
 router.get ('/:id', function (req,res){
   Controller.show (req,res,cbResponseJSON)
 })

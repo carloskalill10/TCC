@@ -1,5 +1,6 @@
 const Model =acessosModel
 const ModelReservas = reservasModel
+const ModelUsuarios = usuariosModel
 const msg = ''
 const async =require ('async')
 
@@ -16,7 +17,7 @@ module.exports ={
           usuario_res: data._id
         };//criando query para pesquisar se existe laboratorio resenvado para o hora e dia para o usuario definido
     
-        reservasModel.findOne(queryLab, function (err, data) {//pesquindo se ha reserva
+        ModelReservas.findOne(queryLab, function (err, data) {//pesquindo se ha reserva
           if (data != null) {
     
             if (validaHora(data)) {//validando se existe laboratorio para hora definida
@@ -28,19 +29,19 @@ module.exports ={
     
               })
             } else {
-              respEsp = { 'ok': 'nop' }
+              respEsp = { 'ok': 'nop1' }
               cb(err, respEsp, res)
             }
     
           } else {
-            respEsp = { 'ok': 'nop' }
+            respEsp = { 'ok': 'nop2' }
             cb(err, respEsp, res)
           }
     
         })
     
       } else { 
-        respEsp = { 'ok': 'nop' }
+        respEsp = { 'ok': 'nop3' }
         cb(err, respEsp, res)
       }
     

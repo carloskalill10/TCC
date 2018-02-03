@@ -24,38 +24,52 @@
         alert('falha na operção')
       })
     }
-    $scope.desabilitar=function (idLab) {
-      let desabilitar = url+"/"+idLab
+
+    $scope.iniciarModalDeletarL=function(lab){
+      $('#modal-Deletar').modal('show')
+      $scope.lab=lab
+      $scope.listarLab()
+
+    }
+
+    $scope.fecharModalDeletarL=function(){
+      $('#modal-Deletar').modal('hide');
+      $scope.listarLab()
+    }
+
+    $scope.desabilitar=function () {
+      let desabilitar = url+"/"+$scope.lab._id
       $http.delete(desabilitar).then(function(response){
-        $scope.listarLab()
+        $scope.fecharModalDeletarL()
         alert('Laboratorio Excluido')
       }).catch(function(resp){
+        $scope.fecharModalDeletarL()
         alert('Erro na exclusão')
       })
     }
 
-    $scope.iniciarModal=function(nome,id){
+    $scope.iniciarModal=function(lab){
       $('#modal-atualizar').modal('show')
-      $scope.labNome=nome
-      $scope.labId=id
+      $scope.lab=lab
+      $scope.listarLab()
 
     }
 
     $scope.fecharModal=function(){
       $('#modal-atualizar').modal('hide');
+      $scope.listarLab()
     }
 
     $scope.atualizarLab=function(){
-      let atualizar =url+"/"+$scope.labId
-      let json = {"nome":$scope.labNome}
-      $http.put(atualizar,json).then(function(response){
-        alert('Atualização Realizada')
+      let atualizar =url+"/"+$scope.lab._id
+
+      $http.put(atualizar,$scope.lab).then(function(response){
         $scope.fecharModal()
-        $scope.listarLab()
+        alert('Atualização Realizada')
 
       }).catch(function(resp){
-        alert('Erro na Atualização')
         $scope.fecharModal()
+        alert('Erro na Atualização')
 
       })
     }
