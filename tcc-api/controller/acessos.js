@@ -25,17 +25,22 @@ module.exports ={
               const model = new Model(dados)
               model.save(function (err, data) {//salvando acesso
                 respEsp = { 'ok': 'ok' }
+                            
                 cb(err, respEsp, res)
+                
     
               })
             } else {
               respEsp = { 'ok': 'nop1' }
+                      
               cb(err, respEsp, res)
             }
     
           } else {
             respEsp = { 'ok': 'nop2' }
+            
             cb(err, respEsp, res)
+            
           }
     
         })
@@ -43,6 +48,8 @@ module.exports ={
       } else { 
         respEsp = { 'ok': 'nop3' }
         cb(err, respEsp, res)
+        
+        
       }
     
     })
