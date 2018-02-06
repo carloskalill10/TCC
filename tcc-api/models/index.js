@@ -1,6 +1,6 @@
 const fs = require ('fs')
 
-const MODELS_FOLDER ='../models'
+const MODELS_FOLDER ='./models'
 
 fs.readdirSync (MODELS_FOLDER).forEach (function(file){
   if (file !== 'index.js'){
