@@ -1,1 +1,34 @@
 <content-header name="Reservas" small="Listar"> </content-header>
+
+<div class="box-body" ng-controller="">
+    <table class="table">
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> USUARIO </th>
+                <th>LABORATORIO</th>
+                <th> DATA</th>
+                <th> AÇÕES </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Adrisson</td>
+                <td>Robo</td>
+                <td>11/11/1111</td>
+                <td style="width:100px;">
+                    <button class="btn btn-warning" ng-click="iniciarModal(lab)">
+                        <i class="fa fa-pencil"> </i>
+                    </button>
+                    <button class="btn btn-danger" ng-click="iniciarModalDeletarL(lab)">
+                        <i class="fa fa-trash-o"> </i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div ng-include="'laboratorios/modalAtualizarL.html'"></div>
+    <div ng-include="'laboratorios/modalDeletarL.html'"></div>
+</div>

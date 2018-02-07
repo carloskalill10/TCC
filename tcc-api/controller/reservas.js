@@ -14,6 +14,7 @@ module.exports ={
 
   retrieve: function(req,res,cb){ // consertar para trazer nome do usuario e do laboratorio que foi feita a reserva
     Model.find({}, function (err,data){
+      
       cb (err,data,res)
     })
   },
