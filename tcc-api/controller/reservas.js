@@ -5,6 +5,7 @@ const async =require ('async')
 module.exports ={
   create: function (req,res, cb){
     const dados =req.body
+    dados.dt_reserva=new Date()
     const model = new Model(dados)
 
     model.save (function(err,data){
