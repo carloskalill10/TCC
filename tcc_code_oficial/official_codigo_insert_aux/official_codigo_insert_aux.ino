@@ -12,12 +12,12 @@ MFRC522 mfrc522(SS_PIN, RST_PIN); // Cria acesso MFRC522
 String tag; // codigo lido do rfid
 
 // Definições da rede Wifi
-const char* login = "PISO 2";
-const char* senha = "a82dis@!";
+const char* login = "Ferias";
+const char* senha = "a1d1n1Dmr123321";
 
 // endereço IP local do Servidor Web instalado na Raspberry Pi 3
 // onde será exibida a página web
-const char* Host = "192.168.0.28";   
+const char* Host = "192.168.100.6";   
 
 WiFiClient client;
 
@@ -72,7 +72,7 @@ void initWiFi()
  * utiliza a biblioteca ArduinoJson
  */
 void montaJSON(){
-  dado["id_usuario"] = tag;  
+  dado["tag"] = tag;  
 }
 
 
@@ -88,7 +88,7 @@ String metodoPOST()
   }else{    
     Serial.println("Conectado ao servidor");
     // Faz o HTTP POST request    
-    client.println("POST /api/acessos HTTP/1.1");
+    client.println("POST /api/insert_aux HTTP/1.1");
     client.println("Host: 192.168.0.28");
     client.println("Content-Type: application/json");
     client.print("Content-Length: ");

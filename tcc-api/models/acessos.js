@@ -8,7 +8,6 @@ const acessosSchema = new Schema({
   dt_acesso: 
     { 
       type: Date, 
-      default: Date.now, 
       required: true 
     },
 })

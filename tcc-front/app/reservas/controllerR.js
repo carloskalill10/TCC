@@ -28,6 +28,7 @@
             reserva.dt_entrada = converterData(reserva.data, reserva.hora_entrada);
             reserva.dt_saida = converterData(reserva.data, reserva.hora_saida);
             $http.post(urls[2], reserva).then(function (response) {
+                $scope.reserva={};
                 alert('Reserva realizada!!');
             }).catch(function (resp) {
                 console.log(resp)
@@ -38,12 +39,11 @@
     }
     function converterData(data, hora) {
         //let date = new Date(data);
-        let day = data.getDate() < 9 ? "0" + data.getDate() : data.getDate();
-        let month = (data.getMonth() + 1) < 9 ? "0" + (data.getMonth() + 1) : (data.getMonth() + 1);
-        let hours = hora.getHours() < 9 ? "0" + hora.getHours() : hora.getHours();
-        let minutes = hora.getMinutes() < 9 ? "0" + hora.getMinutes() : hora.getMinutes();
-        let dataString = day + "/" + month + "/" + data.getFullYear() + " " + hours + ":" + minutes + ":00";
-        let date = new Date(dataString);
-        return date;
+        let day = data.getDate() < 10 ? "0" + data.getDate() : data.getDate();
+        let month = (data.getMonth() + 1) < 10 ? "0" + (data.getMonth() + 1) : (data.getMonth() + 1);
+        let hours = hora.getHours() < 10 ? "0" + hora.getHours() : hora.getHours();
+        let minutes = hora.getMinutes() < 10 ? "0" + hora.getMinutes() : hora.getMinutes();
+        let dataString = data.getFullYear() + "-" + month + "-" + day + "T" + hours + ":" + minutes + ":00";
+        return dataString;
     }
 })()

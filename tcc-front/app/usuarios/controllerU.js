@@ -6,13 +6,13 @@
   ])
 
   function userController($scope,$http){
-    const url='http://localhost:3000/api/usuarios'
+    const url=['http://localhost:3000/api/usuarios','http://localhost:3000/api/insert_aux']
     $scope.userTipo=false
     $scope.user={}
     $scope.user.tipo=false
 
     $scope.listaruser=function () {
-      $http.get(url).then(function(response){
+      $http.get(url[0]).then(function(response){
         let users =response.data
         $scope.users=[]
         users.forEach(function(data){
@@ -31,14 +31,22 @@
       if($scope.user.tipo==false){
         $scope.user.tipo=2
       }
-      $http.post(url,$scope.user).then(function(response) {
+      $http.post(url[0],$scope.user).then(function(response) {
         $scope.user ={}
         alert('Usuário cadastrado')
       }).catch(function(resp){
         alert('falha na operção')
       })
     }
-
+    $scope.habilitarForm=function(){
+      $http.get(url[1]).then(function(response){
+        const retorno = response.data;
+        if(retorno!==null){
+         
+          $scope.user.tag=retorno[0].tag;
+        }
+      });
+    }
     $scope.iniciarModalDeletarU=function(user){
       $('#modal-DeletarU').modal('show')
       $scope.user=user
@@ -104,6 +112,7 @@
      }
 
     $scope.listaruser()
+    $scope.habilitarForm()
 
   }
 

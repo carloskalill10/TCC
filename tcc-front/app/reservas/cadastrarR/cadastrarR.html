@@ -25,11 +25,12 @@
 
         <div class="form-group col-xs-12 col-sm-6 col-md-5 col-lg-5">
           <label>Data de utilização:</label>
-          <div class="input-group date">
+          <div class="input-group">
             <div class="input-group-addon">
               <i class="fa fa-calendar"></i>
             </div>
-            <input type="date" class="form-control pull-right" id="dt_uso" ng-model="reserva.data">
+            <input type="date" min="2018-00-00" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" class="form-control" id="dt_uso" ng-model="reserva.data">
+            
           </div>
         </div>
 
@@ -38,7 +39,7 @@
           <div class="form-group">
             <label>Horário de entrada:</label>
             <div class="input-group">
-              <input type="time" class="form-control timepicker" ng-model="reserva.hora_entrada">
+              <input type="time"  class="form-control" ng-model="reserva.hora_entrada" >
               <div class="input-group-addon">
                 <i class="fa fa-clock-o"></i>
               </div>
