@@ -11,6 +11,7 @@
     $scope.user={}
     $scope.user.tipo=false
 
+
     $scope.listaruser=function () {
       $http.get(url[0]).then(function(response){
         let users =response.data
@@ -42,7 +43,6 @@
       $http.get(url[1]).then(function(response){
         const retorno = response.data;
         if(retorno!==null){
-         
           $scope.user.tag=retorno[0].tag;
         }
       });

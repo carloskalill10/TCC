@@ -8,7 +8,7 @@
 
   function labController($scope,$http){
 
-    const url='http://localhost:3000/api/laboratorios'
+    const url='http://192.168.100.5:3000/laboratories'
     $scope.lab ={}
     $scope.listarLab=function () {
       $http.get(url).then(function(response){

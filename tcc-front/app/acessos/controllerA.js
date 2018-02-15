@@ -8,15 +8,20 @@
 
   function acessoController($scope,$http){
 
-    const url='http://localhost:3000/api/acessos'
-    $scope.lab ={}
-    $scope.listarLab=function () {
-      $http.get(url).then(function(response){
-        $scope.labs =response.data
-      })
-    }
+    const urls = ['http://localhost:3000/api/usuarios', 'http://localhost:3000/api/laboratorios'
+    , 'http://localhost:3000/api/reservas'];
+  
+    $scope.labs = [];
+    
+    $scope.listarLabs = function () {
+      $http.get(urls[1]).then(function (response) {
+          $scope.labs = response.data;
+      }).catch(function (resp) {
+          console.log(resp);
+      });
+  };  
 
-    $scope.listarLab()
+    $scope.listarLabs()
   }
 
 })()

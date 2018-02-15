@@ -1,22 +1,26 @@
-<content-header name="Reservas" small="Listar"> </content-header>
+<content-header name="Reservas" small="Atualizar ou Excluir"> </content-header>
 
 <div class="box-body" ng-controller="">
     <table class="table">
         <thead>
             <tr>
-                <th> ID </th>
-                <th> USUARIO </th>
-                <th>LABORATORIO</th>
-                <th> DATA</th>
+                <th> USUÁRIO </th>
+                <th>LABORATÓRIO</th>
+                <th> DATA DA RESERVA</th>
+                <th> DATA RESERVADA</th>
+                <th> HORÁRIO DE ENTRADA </th>
+                <th> HORÁRIO DE SAÍDA</th>
                 <th> AÇÕES </th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>1</td>
-                <td>Adrisson</td>
-                <td>Robo</td>
-                <td>11/11/1111</td>
+                <td>carlos kenneton</td>
+                <td>metrologia</td>
+                <td>02/01/2018</td>
+                <td>10/01/2018</td>
+                <td>10:00</td>
+                <td>12:00</td>
                 <td style="width:100px;">
                     <button class="btn btn-warning" ng-click="iniciarModal(lab)">
                         <i class="fa fa-pencil"> </i>

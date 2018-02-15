@@ -27,6 +27,6 @@ angular.module('app').config([
       url:"/usuarios/cadastrarU",
       templateUrl:"usuarios/cadastrarU/cadastrarU.html"
     })
-    $urlRouterProvider.otherwise('/reservas/indexRes.html')
+    $urlRouterProvider.otherwise('/reservas/indexRes')
   }
 ])
